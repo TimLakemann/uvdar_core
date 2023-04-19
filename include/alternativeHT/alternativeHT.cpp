@@ -115,24 +115,6 @@ void alternativeHT::expandedSearch(std::vector<PointState>& no_nn_current_frame,
             cv::Point2d bb_left_top = cv::Point2d( (x_predicted - x_conf), (y_predicted - y_conf) );
             cv::Point2d bb_right_bottom = cv::Point2d( (x_predicted + x_conf), (y_predicted + y_conf) );
             
-            
-            // last_point.confidence_interval.x = x_predictions.confidence_interval;
-            // last_point.predicted.x = x_predictions.predicted_coordinate;
-            // last_point.x_coeff = x_predictions.coeff;
-// 
-            // last_point.confidence_interval.y = y_predictions.confidence_interval;
-            // last_point.predicted.y= y_predictions.predicted_coordinate;
-            // last_point.y_coeff = y_predictions.coeff;
-            // last_point.extended_search = true;
-            
-            // construct BB 
-            // cv::Point2d left_top =     last_point.predicted - last_point.confidence_interval;   
-            // cv::Point2d right_bottom = last_point.predicted + last_point.confidence_interval;
-            // TODO: should be done in a later step!
-            // left_top.x = std::floor(left_top.x);
-            // left_top.y = std::floor(left_top.y);
-            // right_bottom.x = std::ceil(right_bottom.x);
-            // right_bottom.y = std::ceil(right_bottom.y);
 
             if(debug_){
                 std::cout << "[Aht]: Predicted Point: x = " << x_predicted << " y = " << y_predicted << " Prediction Interval: x = " << x_conf << " y = " << y_conf << " seq_size" << x.size();
@@ -140,14 +122,7 @@ void alternativeHT::expandedSearch(std::vector<PointState>& no_nn_current_frame,
             }
 
             for(auto it_frame = no_nn_current_frame.begin(); it_frame != no_nn_current_frame.end();){
-            // for(int i = 0; i < (int)no_nn_current_frame.size(); i++){
-                // if(extended_search_->isInsideBB(no_nn_current_frame[i].point, left_top, right_bottom)){
                 if(extended_search_->isInsideBB(it_frame->point, bb_left_top, bb_right_bottom)){
-                    // it_frame->extended_search = true;
-                    // it_frame->x_coeff = last_point.x_coeff;
-                    // it_frame->y_coeff = last_point.y_coeff;
-                    // it_frame->confidence_interval = last_point.confidence_interval;
-                    // it_frame->predicted = last_point.predicted;
                     it_frame->x_statistics = last_point.x_statistics;
                     it_frame->y_statistics = last_point.y_statistics;
                     insertPointToSequence(*sequences_no_insert[k], *it_frame);
