@@ -330,10 +330,6 @@ std::vector<std::pair<seqPointer, int>> alternativeHT::getResults(){
         }
 
         int id = matcher_->matchSignalWithCrossCorr(led_states);
-        if(id >= 0 ){ 
-            // gc++;
-            // std::cout << "gc " << gc << "\n";
-        } 
         auto sequence_copy = sequence; 
         retrieved_signals.push_back(std::make_pair(sequence_copy, id));
     }

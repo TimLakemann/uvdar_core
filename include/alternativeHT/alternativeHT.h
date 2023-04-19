@@ -36,7 +36,6 @@ namespace uvdar
     
     private:
         bool debug_ = false;
-        int gc=0; // TODO: Delete only for logging right now
 
         std::unique_ptr<loadedParamsForAHT> loaded_params_ = std::make_unique<loadedParamsForAHT>();
 
