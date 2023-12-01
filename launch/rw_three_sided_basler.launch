@@ -89,7 +89,6 @@
   <arg name="confidence_probability" default="95.0"/>
   <arg name="frame_tolerance" default="5"/>
   <arg name="allowed_BER_per_seq" default="0"/>
-  <arg name="std_threshold_poly_reg" default="1"/>
 
 
   <!-- Model settings: -->
@@ -235,7 +234,6 @@
       <param name="confidence_probability"         type="double" value="$(arg confidence_probability)"/>
       <param name="frame_tolerance"     type="int"   value="$(arg frame_tolerance)"/>
       <param name="allowed_BER_per_seq"     type="int"   value="$(arg allowed_BER_per_seq)"/>
-      <param name="std_threshold_poly_reg"     type="double"   value="$(arg std_threshold_poly_reg)"/>
 
       <!-- <rosparam param="camera_topics"> ["camera_left", "camera_right"] </rosparam> -->
       <!-- <rosparam param="points_seen_topics"> ["points_seen_left", "points_seen_right"] </rosparam> -->

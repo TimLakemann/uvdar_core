@@ -49,6 +49,7 @@
 
   <arg name="sequence_file" default="$(find uvdar_core)/config/selected.txt"/>
 
+  <!--OMT values-->
   <arg name="max_px_shift_y" default="3"/>
   <arg name="max_px_shift_x" default="3"/>
   <arg name="max_zeros_consecutive" default="2"/>
@@ -59,7 +60,6 @@
   <arg name="decay_factor" default="0.1"/>
   <arg name="confidence_probability" default="95.0"/>
   <arg name="allowed_BER_per_seq" default="0"/>
-  <arg name="std_threshold_poly_reg" default="0.3"/>
 
   <arg name="use_4DHT" default="false"/>
   <!--4DHT values-->
@@ -171,7 +171,6 @@
       <param name="decay_factor"            type="double" value="$(arg decay_factor)"/>    
       <param name="confidence_probability"  type="double" value="$(arg confidence_probability)"/>
       <param name="allowed_BER_per_seq"     type="int"    value="$(arg allowed_BER_per_seq)"/>
-      <param name="std_threshold_poly_reg"  type="double" value="$(arg std_threshold_poly_reg)"/>
       
       <param name="accumulator_length"      type="int"    value="$(arg accumulator_length)"/>
       <param name="pitch_steps"             type="int"    value="$(arg pitch_steps)"/>
@@ -189,6 +188,11 @@
       <rosparam param="omta_logging_topics"> ["omta_logging_left", "omta_logging_right", "omta_logging_back"] </rosparam>
       <rosparam param="omta_all_seq_info_topics"> ["omta_all_seq_info_left", "omta_all_seq_info_right", "omta_all_seq_info_back"] </rosparam>
 
+      <rosparam param="runtime_omta_fill"> ["runtime_omta_fill_left", "runtime_omta_fill_right", "runtime_omta_fill_back"] </rosparam>
+      <rosparam param="runtime_omta_results"> ["runtime_omta_results_left", "runtime_omta_results_right", "runtime_omta_results_back"] </rosparam>
+
+      <rosparam param="runtime_4dht_fill"> ["runtime_4dht_fill_left", "runtime_4dht_fill_right", "runtime_4dht_fill_back"] </rosparam>
+      <rosparam param="runtime_4dht_results"> ["runtime_4dht_results_left", "runtime_4dht_results_right", "runtime_4dht_results_back"] </rosparam>
 
 
       <remap from="~camera_left" to="/$(arg uav_name)/uvdar_bluefox_left/image_raw"/> -
@@ -209,6 +213,23 @@
       <remap from="~omta_all_seq_info_left" to="/$(arg uav_name)/uvdar/omta_all_seq_info_left"/>
       <remap from="~omta_all_seq_info_right" to="/$(arg uav_name)/uvdar/omta_all_seq_info_right"/>
       <remap from="~omta_all_seq_info_back" to="/$(arg uav_name)/uvdar/omta_all_seq_info_back"/>
+
+      <remap from="~runtime_omta_fill_left" to="/$(arg uav_name)/uvdar/runtime_omta_fill_left"/>
+      <remap from="~runtime_omta_fill_right" to="/$(arg uav_name)/uvdar/runtime_omta_fill_right"/>
+      <remap from="~runtime_omta_fill_back" to="/$(arg uav_name)/uvdar/runtime_omta_fill_back"/>
+
+      <remap from="~runtime_omta_results_left" to="/$(arg uav_name)/uvdar/runtime_omta_results_left"/>
+      <remap from="~runtime_omta_results_right" to="/$(arg uav_name)/uvdar/runtime_omta_results_right"/>
+      <remap from="~runtime_omta_results_back" to="/$(arg uav_name)/uvdar/runtime_omta_results_back"/>
+
+      <remap from="~runtime_4dht_fill_left" to="/$(arg uav_name)/uvdar/runtime_4dht_fill_left"/>
+      <remap from="~runtime_4dht_fill_right" to="/$(arg uav_name)/uvdar/runtime_4dht_fill_right"/>
+      <remap from="~runtime_4dht_fill_back" to="/$(arg uav_name)/uvdar/runtime_4dht_fill_back"/>
+
+      <remap from="~runtime_4dht_results_left" to="/$(arg uav_name)/uvdar/runtime_4dht_results_left"/>
+      <remap from="~runtime_4dht_results_right" to="/$(arg uav_name)/uvdar/runtime_4dht_results_right"/>
+      <remap from="~runtime_4dht_results_back" to="/$(arg uav_name)/uvdar/runtime_4dht_results_back"/>
+
 
       <remap from="~visualization" to="/$(arg uav_name)/uvdar/blink_visualization/image_raw"/>
 
